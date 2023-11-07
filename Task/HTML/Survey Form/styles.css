@@ -1,0 +1,70 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: rgb(15, 187, 255);
+}
+
+.head{
+    margin-top: 67px;
+    text-align: center;
+    font-size: 24px;
+    font-family: monospace;
+    color: #ffffff;
+}
+.container {
+    width: 50%;
+    margin: 0 auto;
+}
+
+#surveyForm {
+    background-color: #ffffff;
+    padding: 20px;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.form-group {
+    margin: 10px 0;
+}
+
+.form-group label {
+    display: inline-block;
+    width: 150px;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group select {
+    padding: 5px;
+}
+
+.checkbox-group label {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+#popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.button{
+    background-color: rgb(15, 187, 255);
+    color: white;
+    border: none;
+    height: 38px;
+    width: 95px;
+    cursor: pointer;
+}
+
+.reset{
+    background-color: red;
+}

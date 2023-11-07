@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Survey Form</title>
+    <link rel="stylesheet" href="styles.css ">
+</head>
+
+<body>
+    <div class="head">
+        <h1>Customer Survey Form</h1>
+    </div>
+    <div class="container">
+        <form id="surveyForm" onsubmit="return validateForm()">
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="text" id="firstName" required>
+            </div>
+
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" id="lastName" required>
+            </div>
+
+            <div class="form-group">
+                <label for="dob">Date of Birth</label>
+                <input type="date" id="dob" required>
+            </div>
+
+            <div class="form-group">
+                <label for="country">Country</label>
+                <select id="country" required>
+                    <option value="India">India</option>
+                    <option value="USA">USA</option>
+                    <option value="Canada">Canada</option>
+                    <option value="UK">UK</option>
+
+                    <!-- Add more options as needed -->
+                </select>
+            </div>
+
+            <div class="form-group checkbox-group">
+                <label>Gender</label>
+                <input type="checkbox" id="male" name="gender"> <label for="male">Male</label>
+                <input type="checkbox" id="female" name="gender" style="margin-left: -98px;"> <label
+                    for="female">Female</label>
+            </div>
+
+            <div class="form-group">
+                <label for="profession">Profession</label>
+                <input type="text" id="profession" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="mobile">Mobile Number</label>
+                <input type="tel" id="mobile" required>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="button">SUBMIT</button>
+                <button type="button" class="button reset" onclick="resetForm()">RESET</button>
+            </div>
+        </form>
+
+        <div id="popup" class="popup">
+            <h2>Survey Data</h2>
+            <p id="popupContent"></p>
+            <button onclick="closePopup()" class="button">Close</button>
+        </div>
+    </div>
+
+    <script>
+        function validateForm() {
+            // Perform additional validation if needed
+            // For now, just show the popup with entered values
+            showPopup();
+            return false; // Prevent form submission
+        }
+
+        function showPopup() {
+            const popup = document.getElementById('popup');
+            const popupContent = document.getElementById('popupContent');
+
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const dob = document.getElementById('dob').value;
+            const country = document.getElementById('country').value;
+            const gender = document.querySelectorAll('input[name="gender"]:checked');
+            const profession = document.getElementById('profession').value;
+            const email = document.getElementById('email').value;
+            const mobile = document.getElementById('mobile').value;
+
+            let genderValues = [];
+            gender.forEach((checkbox) => {
+                genderValues.push(checkbox.labels[0].textContent);
+            });
+
+            popupContent.innerHTML = `
+                First Name: ${firstName}<br>
+                Last Name: ${lastName}<br>
+                Date of Birth: ${dob}<br>
+                Country: ${country}<br>
+                Gender: ${genderValues.join(', ')}<br>
+                Profession: ${profession}<br>
+                Email: ${email}<br>
+                Mobile Number: ${mobile}
+            `;
+
+            popup.style.display = 'block';
+        }
+
+        function closePopup() {
+            const popup = document.getElementById('popup');
+            popup.style.display = 'none';
+
+            // Reset the form after closing the popup
+            document.getElementById('surveyForm').reset();
+        }
+
+        function resetForm() {
+            // Reset the form when the "Reset" button is clicked
+            document.getElementById('surveyForm').reset();
+        }
+    </script>
+</body>
+
+</html>
